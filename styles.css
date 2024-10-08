@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body tenga al menos la altura de la ventana */
+}
+
+header {
+    background-color: #007acc;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    grid-template-rows: repeat(2, 1fr); /* 2 filas con altura igual */
+    gap: 20px;
+    padding: 20px;
+    flex: 1; /* Permite que el main ocupe el espacio restante */
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px; /* Aumentar el padding para mayor espacio */
+    transition: transform 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease; /* Transición más suave */
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border: 1px solid #e0e0e0; /* Borde suave */
+    display: flex; /* Usar flexbox para centrar contenido */
+    flex-direction: column; /* Para que la imagen y el texto se apilen verticalmente */
+    height: 480px; /* Mantener todas las secciones del mismo tamaño */
+    gap: 20px;
+}
+
+.image-container {
+    width: 100%; /* Hace que el contenedor de la imagen ocupe todo el ancho */
+    height: 250px; /* Altura fija para el contenedor de la imagen cuando no está seleccionado */
+    margin-bottom: 15px; /* Espacio entre la imagen y el título */
+    overflow: hidden; /* Evita que las imágenes se salgan del contenedor */
+    border-radius: 10px; /* Borde redondeado */
+    transition: height 0.5s ease; /* Suaviza la transición al cambiar la altura */
+}
+
+img {
+    width: 100%; /* Ajusta la imagen al 100% del contenedor */
+    height: 100%; /* Asegura que la imagen ocupe toda la altura del contenedor */
+    object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
+    transition: object-fit 0.5s ease; /* Suaviza la transición del ajuste de la imagen */
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.container.active {
+    transform: scale(1.05) translateY(-10px);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.container.active .image-container {
+    height: 480px; /* Aumenta la altura del contenedor de la imagen cuando está activo */
+}
+
+.container.active .image-container img {
+    object-fit: contain; /* Cambia a contain para que toda la imagen se muestre */
+    transform: scale(1); /* Restablece el tamaño de la imagen al 100% */
+}
+
+h2 {
+    color: #007acc;
+    margin-bottom: -10px; /* Espacio entre el título y el contenido */
+    text-align: left; /* Alinear el texto del título a la izquierda */
+}
+
+ol, ul {
+    margin-top: 10px;
+    padding-left: 20px; /* Espacio a la izquierda */
+}
+
+ul li, ol li {
+    margin-bottom: 8px; /* Espacio entre los elementos de la lista */
+    position: relative; /* Para agregar un decorador */
+    text-align: left; /* Alinear el texto de las listas a la izquierda */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #007acc;
+    color: white;
+    margin-top: auto; /* Asegura que el footer esté en la parte inferior */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Asegúrate de que el contenedor principal tenga una posición relativa */
+.main-container {
+    position: relative; /* Para posicionar los hijos en relación a este contenedor */
+    min-height: 100vh; /* Asegúrate de que el contenedor principal ocupe al menos toda la altura de la pantalla */
+}
+
+/* Modificar el contenedor activo */
+.container.active {
+    position: absolute; /* Cambia a posición absoluta para evitar el desbordamiento */
+    top: 7.3%; /* Ajusta el espacio desde la parte superior para no cubrir el header */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, 0) scale(1.05); /* Centra y aumenta ligeramente su tamaño */
+    width: 50%; /* Hacer que ocupe el 70% del ancho del contenedor padre */
+    height: 50%; /* Permitir que la altura se ajuste automáticamente */
+    max-height: 80%; /* Hacer que ocupe como máximo el 80% de la altura de la pantalla */
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo más claro y opaco */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); /* Sombra más intensa */
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    opacity: 1; /* Asegura que el contenedor sea visible */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Suaviza la transición */
+    overflow: auto; /* Permitir el desplazamiento si es necesario */
+}
+
+/* Cambia el contenedor normal para asegurarte de que no tenga propiedades fijas */
+.container {
+    transition: opacity 0.5s ease; /* Suaviza la transición de opacidad */
+    opacity: 1; /* Asegura que los contenedores sean visibles por defecto */
+}
+
+.container-image1 {
+    background-color: #EFEFEF;
+}
+
+.container-image2 {
+    background-color: #FFFFFF;
+}
+
+.container-image3 {
+    background-color: #F5F5F0;
+}
+
+.container-image4 {
+    background-color: #EDF4F2;
+}
+
+h3 {
+    margin: -10px 0 -15px 0;
+}
